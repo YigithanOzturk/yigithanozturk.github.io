@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <style>
+    /* Basic reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    header { background: #f4f4f4; padding: 1rem; text-align: center; }
+    nav ul { list-style: none; display: flex; justify-content: center; gap: 1rem; }
+    nav a { text-decoration: none; color: #333; }
+    section { padding: 2rem 1rem; max-width: 1000px; margin: auto; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .project-card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+    footer { background: #f4f4f4; text-align: center; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Name</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#future">Future Plans</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Brief introduction about your background, education, and interests.</p>
+    <p>More detailed descriptions, achievements, awards, etc.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Project Title 1</h3>
+        <p>Description of project 1, technologies used, features.</p>
+        <a href="#">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Title 2</h3>
+        <p>Description of project 2, technologies used, features.</p>
+        <a href="#">View on GitHub</a>
+      </div>
+      <!-- Daha fazla proje ekleyin -->
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Programming Languages: JavaScript, Python, C#</li>
+      <li>Frameworks: React, Node.js, Django</li>
+      <li>Tools: Git, Docker, Linux</li>
+      <!-- Diğer yetenekler -->
+    </ul>
+  </section>
+
+  <section id="future">
+    <h2>Future Plans</h2>
+    <p>Yakında üzerinde çalışacağım projeler ve hedefler.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
+</body>
+</html>
