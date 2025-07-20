@@ -3,14 +3,21 @@ const navLinks = document.querySelectorAll('nav a');
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    document
+      .querySelector(link.getAttribute('href'))
+      .scrollIntoView({ behavior: 'smooth' });
   });
 });
+
 window.addEventListener('scroll', () => {
   const fromTop = window.scrollY + 200;
   navLinks.forEach(link => {
     const section = document.querySelector(link.getAttribute('href'));
-    if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+    if (
+      section &&
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');
@@ -28,4 +35,5 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
     observer.unobserve(entry.target);
   });
 }, appearOptions);
+
 faders.forEach(fader => appearOnScroll.observe(fader));
