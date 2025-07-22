@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yiğithan Öztürk - Portföy</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yiğithan Öztürk - Jr. Fullstack Developer</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- Lottie -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top">↑</button>
+
+  <!-- Navbar & Theme Toggle -->
   <header class="navbar">
     <div class="container nav-inner">
       <div class="logo">YÖ</div>
@@ -19,26 +33,24 @@
           <li><a href="#contact">İletişim</a></li>
         </ul>
       </nav>
-      <div class="social-icons">
-        <a href="#"><img src="icon1.svg" alt="Icon1"></a>
-        <a href="#"><img src="icon2.svg" alt="Icon2"></a>
+      <div class="actions">
+        <button id="theme-toggle">🌙</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero with Particles & Parallax -->
   <section id="hero" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-image">
-        <img src="profile.jpg" alt="Yiğithan Öztürk">
-      </div>
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <div class="hero-image" id="parallax-img"><img src="profile.jpg" alt="Yiğithan Öztürk"></div>
       <div class="hero-text">
         <h1>Yiğithan Öztürk</h1>
-        <p class="subtitle">Jr. Fullstack Devoloper</p>
-        <p class="description">Çocukluk yıllarımdan itibaren bilgisayar mühendisliği alanına olan ilgim ile donanım ve yazılım dünyasında kendimi geliştirdim. Üniversite eğitimimde hem teknik hem de liderlik becerileri edindim.</p>
+        <span id="subtitle"></span>
+        <p>Çocukluk yıllarımdan itibaren bilgisayar mühendisliğine olan ilgim ile donanım ve yazılım dünyasında kendimi geliştirdim.</p>
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">Projeler</a>
-          <a href="CV.pdf" class="btn btn-outline">CV İndir</a>
+          <a href="#about" class="btn btn-primary">Hakkımda</a>
+          <a href="#projects" class="btn btn-outline">Projeler</a>
         </div>
       </div>
     </div>
@@ -48,7 +60,9 @@
   <section id="about" class="section fade-up">
     <div class="container">
       <h2>Hakkımda</h2>
-      <p>Bilgisayar mühendisliği alanına olan ilgim, çocukluk yıllarımdan itibaren başladı ve bu süre zarfında gerek donanım gerekse yazılım alanında kapsamlı bir bilgi birikimi edindim. Üniversite eğitimim süresince elektronik, sosyal bilimler, takım liderliği ve çalışması konularında kendimi geliştirdim.</p>
+      <p>Profesyonel hedefim, hızlı öğrenme becerimle bulunduğum ortama katkı sağlamak ve kişisel gelişimimi sürdürmektir.</p>
+      <!-- Lottie animation example -->
+      <div id="lottie-about" class="lottie"></div>
     </div>
   </section>
 
@@ -57,16 +71,17 @@
     <div class="container">
       <h2>Projeler</h2>
       <div class="projects-grid">
+        <!-- Add parallax hover micro-animation via CSS -->
         <div class="card">
           <img src="proj1.png" alt="Easyytd v2.0">
           <h3>Easyytd v2.0</h3>
-          <p>React, Node.js, Express ile geliştirilen YouTube indirme aracı</p>
+          <p>React, Node.js, Express ile geliştirilen YouTube indirme aracı.</p>
           <a href="https://github.com/yigithanozturk/easyytd-V2.0" class="btn btn-secondary">GitHub</a>
         </div>
         <div class="card">
           <img src="proj2.png" alt="Project 2">
           <h3>Project 2</h3>
-          <p>Kısa açıklama ve teknolojiler</p>
+          <p>Kısa açıklama ve kullanılan teknolojiler.</p>
           <a href="#" class="btn btn-secondary">Detay</a>
         </div>
       </div>
@@ -78,7 +93,7 @@
     <div class="container">
       <h2>İletişim</h2>
       <p>Email: <a href="mailto:yigithanozturk516@gmail.com">yigithanozturk516@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/yiğithanöztürk">yiğithanöztürk</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/yiğithanoztürk">yiğithanöztürk</a></p>
       <p>GitHub: <a href="https://github.com/yigithanozturk">yigithanozturk</a></p>
     </div>
   </section>
@@ -90,6 +105,7 @@
     </div>
   </footer>
 
+  <!-- Main JS -->
   <script src="script.js"></script>
 </body>
 </html>
