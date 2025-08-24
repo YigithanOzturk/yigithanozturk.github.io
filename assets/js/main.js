@@ -22,7 +22,7 @@ themeBtn?.addEventListener('click', ()=>{
 /* ========== Scroll-Spy (aktif link) ========== */
 const links = document.querySelectorAll('.nav a[href^="#"]');
 const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
-function onScroll(){
+function onScrollSpy(){
   const y = scrollY + 120;
   sections.forEach((sec,i)=>{
     if(!sec) return;
@@ -30,7 +30,7 @@ function onScroll(){
     links[i]?.classList.toggle('active', inView);
   });
 }
-document.addEventListener('scroll', onScroll); onScroll();
+document.addEventListener('scroll', onScrollSpy); onScrollSpy();
 
 /* ========== Reveal on scroll ========== */
 const io = new IntersectionObserver((entries)=>{
@@ -84,9 +84,12 @@ function pill(t){ return `<span class="badge">${t}</span>`; }
 function projectCard(p){
   const liveBtn = p.links?.live ? `<a class="btn" href="${p.links.live}" target="_blank" rel="noreferrer">Canlı</a>` : '';
   const repoBtn = p.links?.repo ? `<a class="btn" href="${p.links.repo}" target="_blank" rel="noreferrer">Repo</a>` : '';
+  // lightbox için thumb tıklanırsa büyük görsel: p.thumb bir resim ise lightbox açılır
+  const thumbIsImg = p.thumb && !p.thumb.startsWith('gradient:');
+  const thumbAttr = thumbIsImg ? `data-lightbox="${p.thumb}"` : '';
   return `
   <article class="project card reveal">
-    <div class="thumb" style="${thumbStyle(p.thumb)}"></div>
+    <div class="thumb" ${thumbAttr} style="${thumbStyle(p.thumb)};cursor:${thumbIsImg?'zoom-in':'default'}"></div>
     <h3 style="margin:.6rem 0 0">${p.title}</h3>
     <p class="muted" style="margin:.2rem 0 .6rem">${p.desc}</p>
     <div class="meta">
@@ -104,14 +107,12 @@ function renderProjectsIndex(data){
 function renderProjectsAll(data){
   const wrap = document.getElementById('projects-all');
   if(!wrap) return;
-  // Kontroller
   const qInput = document.getElementById('proj-search');
   const tagWrap = document.getElementById('proj-tags');
   const clearBtn = document.getElementById('proj-clear');
 
-  // Tagleri çıkar
   const allTags = [...new Set(data.flatMap(p=>p.tech||[]))].sort();
-  tagWrap.innerHTML = allTags.map(t=>`<button class="filter-tag" data-tag="${t}">${t}</button>`).join('');
+  if(tagWrap) tagWrap.innerHTML = allTags.map(t=>`<button class="filter-tag" data-tag="${t}">${t}</button>`).join('');
 
   let activeTags = new Set();
   function applyFilters(){
@@ -123,9 +124,10 @@ function renderProjectsAll(data){
     });
     wrap.innerHTML = filtered.map(projectCard).join('') || `<p class="muted">Eşleşen proje yok.</p>`;
     wrap.querySelectorAll('.reveal').forEach(x=> io.observe(x));
+    bindLightbox(); // yeni eklenen kartlar için
   }
 
-  tagWrap.addEventListener('click', (e)=>{
+  tagWrap?.addEventListener('click', (e)=>{
     const btn = e.target.closest('.filter-tag'); if(!btn) return;
     const tag = btn.dataset.tag;
     if(btn.classList.toggle('active')) activeTags.add(tag); else activeTags.delete(tag);
@@ -134,7 +136,7 @@ function renderProjectsAll(data){
   qInput?.addEventListener('input', applyFilters);
   clearBtn?.addEventListener('click', ()=>{
     qInput.value=''; activeTags.clear();
-    tagWrap.querySelectorAll('.filter-tag').forEach(b=> b.classList.remove('active'));
+    tagWrap?.querySelectorAll('.filter-tag').forEach(b=> b.classList.remove('active'));
     applyFilters();
   });
 
@@ -151,7 +153,6 @@ async function loadProjects(){
 
 /* ========== Blog: liste + tek yazı ========== */
 function mdToHtml(md){
-  // Çok basit Markdown dönüştürücü (başlık, kalın, italik, kod, link)
   let html = md
     .replace(/^### (.*)$/gm, '<h3>$1</h3>')
     .replace(/^## (.*)$/gm, '<h2>$1</h2>')
@@ -160,9 +161,7 @@ function mdToHtml(md){
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\[([^\]]+)\]\(([^\)]+)\)/g,'<a href="$2" target="_blank" rel="noreferrer">$1</a>');
-  // code block (``` ... ```)
   html = html.replace(/```([\s\S]*?)```/g, (m, code)=> `<pre><code>${code.replace(/</g,'&lt;')}</code></pre>`);
-  // satır sonu -> <br>
   html = html.replace(/\n{2,}/g, '</p><p>').replace(/\n/g,'<br>');
   return `<p>${html}</p>`;
 }
@@ -202,7 +201,6 @@ async function initBlog(){
   }else{
     renderBlogList(posts);
   }
-  // arama
   const q = document.getElementById('blog-search');
   const clear = document.getElementById('blog-clear');
   if(q){
@@ -236,29 +234,113 @@ function showToast(message, kind='success'){
   });
 }
 
-/* ========== Form SPA gönderim (Formspree vb.) ========== */
-document.querySelectorAll('form').forEach(f=>{
-  // Honeypot
-  const hp = document.createElement('input');
-  hp.type = 'text'; hp.name = 'website'; hp.tabIndex = -1; hp.autocomplete = 'off';
-  hp.style.position = 'absolute'; hp.style.left='-9999px';
-  f.appendChild(hp);
+/* ========== Form: honeypot + captcha + teşekkür sayfası ========== */
+function initForms(){
+  document.querySelectorAll('form').forEach(f=>{
+    // Honeypot
+    const hp = document.createElement('input');
+    hp.type = 'text'; hp.name = 'website'; hp.tabIndex = -1; hp.autocomplete = 'off';
+    hp.style.position = 'absolute'; hp.style.left='-9999px';
+    f.appendChild(hp);
 
-  f.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    if(hp.value){ return; }
-    const action = f.getAttribute('action');
-    if(!action){ showToast('Form action tanımsız.', 'error'); return; }
+    // Captcha (basit toplama)
+    const a = Math.floor(Math.random()*7)+1;
+    const b = Math.floor(Math.random()*7)+2;
+    const wrap = document.createElement('div');
+    wrap.className = 'captcha-wrap';
+    wrap.innerHTML = `
+      <label for="cap" class="muted">Doğrulama: ${a} + ${b} = ?</label>
+      <input id="cap" name="captcha" type="number" inputmode="numeric" placeholder="Cevap" required>
+    `;
+    f.appendChild(wrap);
 
-    const fd = new FormData(f);
-    try{
-      const res = await fetch(action, { method:'POST', body: fd, headers: { 'Accept':'application/json' } });
-      if(res.ok){ f.reset(); showToast('Mesaj alındı, teşekkürler!', 'success'); }
-      else{ showToast('Gönderim başarısız.', 'error'); }
-    }catch{ showToast('Ağ hatası: gönderilemedi.', 'error'); }
+    f.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      if(hp.value){ return; } // bot
+      const ans = Number(f.querySelector('input[name="captcha"]').value);
+      if(ans !== a + b){ showToast('Doğrulama hatalı.', 'error'); return; }
+
+      const action = f.getAttribute('action');
+      if(!action){ showToast('Form action tanımsız.', 'error'); return; }
+
+      const fd = new FormData(f);
+      try{
+        const res = await fetch(action, { method:'POST', body: fd, headers: { 'Accept':'application/json' } });
+        if(res.ok){
+          f.reset();
+          // teşekkür sayfasına yönlendir
+          location.href = (location.pathname.includes('/src/'))
+            ? '../src/sent.html'
+            : 'src/sent.html';
+        }else{
+          showToast('Gönderim başarısız.', 'error');
+        }
+      }catch{
+        showToast('Ağ hatası: gönderilemedi.', 'error');
+      }
+    });
   });
-});
+}
+
+/* ========== Lightbox ========== */
+let lbOverlay, lbImg;
+function bindLightbox(){
+  document.querySelectorAll('[data-lightbox]').forEach(el=>{
+    el.style.cursor = 'zoom-in';
+    el.addEventListener('click', ()=>{
+      const src = el.getAttribute('data-lightbox');
+      if(!lbOverlay){
+        lbOverlay = document.createElement('div');
+        lbOverlay.className = 'lightbox-overlay';
+        lbOverlay.innerHTML = `<img class="lightbox-img" alt="image preview"><button class="btn" style="position:absolute;top:18px;right:18px">Kapat</button>`;
+        document.body.appendChild(lbOverlay);
+        lbImg = lbOverlay.querySelector('.lightbox-img');
+        lbOverlay.addEventListener('click', (e)=> {
+          if(e.target===lbOverlay || e.target.tagName==='BUTTON') lbOverlay.classList.remove('show');
+        });
+        document.addEventListener('keydown', (e)=> { if(e.key==='Escape') lbOverlay.classList.remove('show'); });
+      }
+      lbImg.src = src;
+      lbOverlay.classList.add('show');
+    });
+  });
+}
+
+/* ========== Scroll progress bar + Back to top ========== */
+function initProgressAndTop(){
+  // progress
+  let bar = document.querySelector('.progress');
+  if(!bar){
+    bar = document.createElement('div');
+    bar.className = 'progress';
+    document.body.appendChild(bar);
+  }
+  function updateBar(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (scrolled*100).toFixed(2) + '%';
+  }
+  document.addEventListener('scroll', updateBar); updateBar();
+
+  // back to top
+  let topBtn = document.querySelector('.back-to-top');
+  if(!topBtn){
+    topBtn = document.createElement('button');
+    topBtn.className = 'back-to-top';
+    topBtn.setAttribute('aria-label','Başa dön');
+    topBtn.innerHTML = '↑';
+    document.body.appendChild(topBtn);
+  }
+  function toggleTop(){
+    if(scrollY > 400) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+  }
+  document.addEventListener('scroll', toggleTop); toggleTop();
+  topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+}
 
 /* ========== Başlatıcılar ========== */
 loadProjects();
 initBlog();
+initForms();
+bindLightbox();
+initProgressAndTop();
