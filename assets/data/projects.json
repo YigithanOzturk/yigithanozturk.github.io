@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Kirmizi — Pazar Yeri",
+    "desc": "Next.js App Router, Prisma ORM, RBAC, Docker ile yerel prod benzeri kurulum.",
+    "tech": ["Next.js", "Prisma", "PostgreSQL", "Docker"],
+    "thumb": "gradient:indigo",
+    "links": { "live": "#", "repo": "#" }
+  },
+  {
+    "title": "LinkedHub — Otomatik Paylaşım",
+    "desc": "GitHub reposunu analiz edip LinkedIn için post taslakları üretir.",
+    "tech": ["Python", "OpenAI API"],
+    "thumb": "gradient:cyan",
+    "links": { "live": "", "repo": "#" }
+  },
+  {
+    "title": "EasyYTD — İndirici",
+    "desc": "YouTube/TikTok dahil çoklu platform video/ses indirici masaüstü uygulaması.",
+    "tech": ["Python", "yt-dlp"],
+    "thumb": "gradient:rose",
+    "links": { "live": "", "repo": "#" }
+  }
+]

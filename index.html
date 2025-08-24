@@ -7,8 +7,6 @@
   <meta name="description" content="Projeler, yetenekler ve iletişim — modern, hızlı ve erişilebilir." />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="assets/img/favicon.png" />
-
-  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Yiğithan Öztürk — Portföy">
   <meta property="og:description" content="Projeler, yazılar ve iletişim.">
@@ -29,7 +27,7 @@
         <a href="src/projects.html">Tüm Projeler</a>
       </nav>
 
-      <!-- Önce tema, sonra menü (JS last-of-type seçiyor) -->
+      <!-- Önce tema, sonra menü -->
       <button id="theme-toggle" class="menu-btn" aria-label="Tema değiştir">Tema</button>
       <button class="menu-btn" aria-label="Menüyü aç/kapat">Menü</button>
     </div>
@@ -99,7 +97,7 @@
         <a class="btn" href="src/projects.html">Tüm projeler</a>
       </div>
 
-      <!-- Dinamik liste (JSON'dan) -->
+      <!-- Dinamik liste -->
       <div id="projects-list" class="grid projects" style="margin-top:1rem">
         <noscript>
           <p class="muted">
@@ -146,6 +144,9 @@
   <footer class="footer">
     © <span id="year"></span> Yiğithan Öztürk — Tüm hakları saklıdır.
   </footer>
+
+  <!-- Toast -->
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <script src="assets/js/main.js"></script>
 </body>

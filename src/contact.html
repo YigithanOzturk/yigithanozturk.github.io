@@ -3,23 +3,34 @@
 <title>İletişim — Yiğithan Öztürk</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="icon" href="../assets/img/favicon.png" />
+<meta property="og:title" content="İletişim — Yiğithan Öztürk">
 </head><body>
 <header class="navbar"><div class="container navbar-inner">
   <a class="brand" href="../index.html">yigithan.dev</a>
-  <nav class="nav"><a href="../index.html#contact" class="active">İletişim</a></nav>
-  <button class="menu-btn">Menü</button>
+  <nav class="nav" aria-label="Ana menü">
+    <a href="../index.html#contact" class="active">İletişim</a>
+    <a href="../index.html#projects">Projeler</a>
+    <a href="../index.html#about">Hakkımda</a>
+  </nav>
+  <button id="theme-toggle" class="menu-btn" aria-label="Tema değiştir">Tema</button>
+  <button class="menu-btn" aria-label="Menüyü aç/kapat">Menü</button>
 </div></header>
 
-<section class="section"><div class="container">
-  <h2>İletişim</h2>
+<section class="section" aria-labelledby="title"><div class="container">
+  <h2 id="title">İletişim</h2>
+  <p class="muted">Formspree/PHP endpoint ile çalışacak basit form.</p>
   <form class="card reveal" style="display:grid;gap:.6rem;margin-top:1rem" action="https://formspree.io/f/your-id" method="POST">
-    <input name="name" required placeholder="Adınız" style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
-    <input type="email" name="email" required placeholder="E‑posta" style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
-    <textarea name="message" rows="5" required placeholder="Mesajınız" style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)"></textarea>
+    <input name="name" required placeholder="Adınız" aria-label="Adınız"
+           style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
+    <input type="email" name="email" required placeholder="E‑posta" aria-label="E‑posta"
+           style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
+    <textarea name="message" rows="5" required placeholder="Mesajınız" aria-label="Mesajınız"
+              style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)"></textarea>
     <button class="btn primary" type="submit">Gönder</button>
   </form>
 </div></section>
 
 <footer class="footer">© <span id="year"></span> Yiğithan Öztürk</footer>
+<div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 <script src="../assets/js/main.js"></script>
 </body></html>
