@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CV — Yiğithan Öztürk</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="../assets/img/favicon.png" />
+  <style>
+    /* Yazdırılabilir CV için ekstra stiller */
+    @media print {
+      .navbar, .footer, #theme-toggle, .menu-btn, .btn.print { display:none !important; }
+      body{background:#fff;color:#000}
+      .card{background:#fff;border:1px solid #000;box-shadow:none}
+    }
+    .timeline{border-left:2px solid var(--accent);margin:2rem 0;padding-left:1rem}
+    .timeline-item{margin-bottom:1.5rem;position:relative}
+    .timeline-item::before{
+      content:"";position:absolute;left:-12px;top:4px;width:10px;height:10px;
+      background:var(--accent);border-radius:50%;
+    }
+    .timeline-item h3{margin:.2rem 0}
+    .timeline-item p{margin:0;color:var(--muted)}
+  </style>
+</head>
+<body>
+<header class="navbar"><div class="container navbar-inner">
+  <a class="brand" href="../index.html">yigithan.dev</a>
+  <nav class="nav">
+    <a href="../index.html">Ana sayfa</a>
+    <a href="./about.html">Hakkımda</a>
+    <a href="./projects.html">Projeler</a>
+    <a href="./contact.html">İletişim</a>
+    <a href="./cv.html" class="active">CV</a>
+  </nav>
+  <button id="theme-toggle" class="menu-btn" aria-label="Tema değiştir">Tema</button>
+  <button class="menu-btn" aria-label="Menü">Menü</button>
+</div></header>
+
+<section class="section"><div class="container">
+  <h2>Özgeçmiş</h2>
+  <button class="btn primary print" onclick="window.print()">PDF indir</button>
+
+  <div class="card reveal" style="margin-top:1rem">
+    <h3>Yiğithan Öztürk</h3>
+    <p class="muted">Bilgisayar Mühendisi • Full-stack Developer Adayı</p>
+    <p>E-posta: <a href="mailto:mail@example.com">mail@example.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/" target="_blank">linkedin.com/in/</a></p>
+    <p>GitHub: <a href="https://github.com/YigithanOzturk" target="_blank">github.com/YigithanOzturk</a></p>
+  </div>
+
+  <h3 style="margin-top:2rem">Eğitim</h3>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <h3>Bilgisayar Mühendisliği Lisans</h3>
+      <p>Üniversite Adı — 2019–2024</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2rem">Deneyim</h3>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <h3>Front-end Developer Stajı</h3>
+      <p>2M Kurumsal AZETech — 2023</p>
+      <p class="muted">Web sayfaları geliştirme (HTML, CSS, JS), SNMP ile cihaz takibi.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <h3>Donanım / Ağ Çalışmaları</h3>
+      <p>Bilgi İşlem — 2022</p>
+      <p class="muted">Sunucu kurulumu, bakım, kartlı kapı kilidi, sensör entegrasyonu.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2rem">Yetenekler</h3>
+  <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem">
+    <div class="card reveal"><strong>Frontend</strong><p class="muted">React, Next.js, TS, Tailwind</p></div>
+    <div class="card reveal"><strong>Backend</strong><p class="muted">Node, Go, Prisma</p></div>
+    <div class="card reveal"><strong>Database & DevOps</strong><p class="muted">PostgreSQL, Docker, GitHub Actions</p></div>
+  </div>
+</div></section>
+
+<footer class="footer">© <span id="year"></span> Yiğithan Öztürk</footer>
+<div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
