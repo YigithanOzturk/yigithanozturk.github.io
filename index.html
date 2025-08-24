@@ -7,6 +7,13 @@
   <meta name="description" content="Projeler, yetenekler ve iletişim — modern, hızlı ve erişilebilir." />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="assets/img/favicon.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yiğithan Öztürk — Portföy">
+  <meta property="og:description" content="Projeler, yazılar ve iletişim.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
@@ -14,14 +21,17 @@
   <header class="navbar">
     <div class="container navbar-inner">
       <a class="brand" href="/">yigithan.dev</a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Ana menü">
         <a href="#about">Hakkımda</a>
         <a href="#projects">Projeler</a>
         <a href="#skills">Yetenekler</a>
         <a href="#contact">İletişim</a>
         <a href="src/projects.html">Tüm Projeler</a>
       </nav>
-      <button class="menu-btn">Menü</button>
+
+      <!-- Önce tema, sonra menü (JS last-of-type seçiyor) -->
+      <button id="theme-toggle" class="menu-btn" aria-label="Tema değiştir">Tema</button>
+      <button class="menu-btn" aria-label="Menüyü aç/kapat">Menü</button>
     </div>
   </header>
 
@@ -31,19 +41,28 @@
     <div class="container hero-grid">
       <div class="reveal">
         <p class="muted">Bilgisayar Mühendisi • Full‑stack Adayı</p>
-        <h1 class="h1">Merhaba, ben <span style="background:linear-gradient(90deg,#3b82f6,#8b5cf6,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent">Yiğithan Öztürk</span>.</h1>
-        <p class="lead">Next.js, TypeScript, Tailwind ve PostgreSQL ağırlıklı; güvenli kimlik doğrulama ve ölçeklenebilir mimari odaklı projeler geliştiriyorum. AI ve siber güvenlik ilgi alanım.</p>
+        <h1 class="h1">
+          Merhaba, ben
+          <span style="background:linear-gradient(90deg,#3b82f6,#8b5cf6,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent">
+            Yiğithan Öztürk
+          </span>.
+        </h1>
+        <p class="lead">
+          Next.js, TypeScript, Tailwind ve PostgreSQL ağırlıklı; güvenli kimlik doğrulama
+          ve ölçeklenebilir mimari odaklı projeler geliştiriyorum. AI ve siber güvenlik ilgi alanım.
+        </p>
         <div class="actions">
           <a class="btn primary" href="#projects">Projelerime göz at</a>
           <a class="btn" href="https://github.com/YigithanOzturk" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
-      <aside class="card reveal">
+
+      <aside class="card reveal" aria-label="Öne çıkan proje">
         <h3 style="margin:.2rem 0">Öne Çıkan: Kirmizi Marketplace</h3>
         <p class="muted" style="margin:.2rem 0 .8rem">Next.js • Prisma • NextAuth • PostgreSQL (Docker)</p>
         <p>Rol tabanlı ilan platformu. Kategoriler, filtreleme ve üretime yakın yerel kurulum.</p>
-        <div class="badges">
+        <div class="badges" aria-label="Teknolojiler">
           <span class="badge">Next.js</span><span class="badge">Prisma</span>
           <span class="badge">PostgreSQL</span><span class="badge">Docker</span>
         </div>
@@ -53,9 +72,9 @@
   </section>
 
   <!-- About -->
-  <section id="about" class="section">
+  <section id="about" class="section" aria-labelledby="about-title">
     <div class="container">
-      <h2>Hakkımda</h2>
+      <h2 id="about-title">Hakkımda</h2>
       <p class="muted">Kısa özet</p>
       <div class="grid" style="grid-template-columns:1fr 2fr;gap:1.2rem;margin-top:1rem">
         <div class="card reveal">
@@ -70,63 +89,32 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="section">
+  <section id="projects" class="section" aria-labelledby="projects-title">
     <div class="container">
       <div style="display:flex;justify-content:space-between;align-items:end;gap:1rem">
         <div>
-          <h2>Projeler</h2>
+          <h2 id="projects-title">Projeler</h2>
           <p class="muted">Seçili çalışmalar</p>
         </div>
         <a class="btn" href="src/projects.html">Tüm projeler</a>
       </div>
 
-      <div class="grid projects" style="margin-top:1rem">
-        <!-- Proje 1 -->
-        <article class="project card reveal">
-          <div class="thumb"></div>
-          <h3 style="margin:.6rem 0 0">Kirmizi — Pazar Yeri</h3>
-          <p class="muted" style="margin:.2rem 0 .6rem">Next.js App Router, Prisma ORM, RBAC</p>
-          <div class="meta">
-            <div class="badges">
-              <span class="badge">Next.js</span><span class="badge">Prisma</span><span class="badge">PostgreSQL</span>
-            </div>
-            <a class="btn" href="#" target="_blank">Canlı</a>
-          </div>
-        </article>
-
-        <!-- Proje 2 -->
-        <article class="project card reveal">
-          <div class="thumb" style="background:linear-gradient(120deg,#0ea5e9aa,#10b981aa)"></div>
-          <h3 style="margin:.6rem 0 0">LinkedHub — Otomatik Paylaşım</h3>
-          <p class="muted" style="margin:.2rem 0 .6rem">GitHub analiz → LinkedIn içerik</p>
-          <div class="meta">
-            <div class="badges">
-              <span class="badge">Python</span><span class="badge">OpenAI API</span>
-            </div>
-            <a class="btn" href="#" target="_blank">Repo</a>
-          </div>
-        </article>
-
-        <!-- Proje 3 -->
-        <article class="project card reveal">
-          <div class="thumb" style="background:linear-gradient(120deg,#f43f5eaa,#f59e0baa)"></div>
-          <h3 style="margin:.6rem 0 0">EasyYTD — İndirici</h3>
-          <p class="muted" style="margin:.2rem 0 .6rem">Çoklu platform video/ses indirici</p>
-          <div class="meta">
-            <div class="badges">
-              <span class="badge">Python</span><span class="badge">yt-dlp</span>
-            </div>
-            <a class="btn" href="#" target="_blank">Repo</a>
-          </div>
-        </article>
+      <!-- Dinamik liste (JSON'dan) -->
+      <div id="projects-list" class="grid projects" style="margin-top:1rem">
+        <noscript>
+          <p class="muted">
+            Projeleri görmek için JavaScript gerekli. Tüm liste:
+            <a class="btn" href="src/projects.html">Tüm projeler</a>
+          </p>
+        </noscript>
       </div>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="section">
+  <section id="skills" class="section" aria-labelledby="skills-title">
     <div class="container">
-      <h2>Yetenekler</h2>
+      <h2 id="skills-title">Yetenekler</h2>
       <p class="muted">HTML • CSS • JavaScript bilgimi öne çıkaran kısa kutular</p>
       <div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; margin-top:1rem">
         <div class="card reveal"><strong>Frontend</strong><p class="muted">React, Next.js, TS, Tailwind</p></div>
@@ -138,14 +126,17 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="section">
+  <section id="contact" class="section" aria-labelledby="contact-title">
     <div class="container">
-      <h2>İletişim</h2>
+      <h2 id="contact-title">İletişim</h2>
       <p class="muted">Projeniz mi var? Yazalım.</p>
       <form class="card reveal" style="display:grid;gap:.6rem;margin-top:1rem" action="https://formspree.io/f/your-id" method="POST">
-        <input name="name" required placeholder="Adınız" style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
-        <input type="email" name="email" required placeholder="E‑posta" style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
-        <textarea name="message" rows="5" required placeholder="Mesajınız" style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)"></textarea>
+        <input name="name" required placeholder="Adınız" aria-label="Adınız"
+               style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
+        <input type="email" name="email" required placeholder="E‑posta" aria-label="E‑posta"
+               style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)" />
+        <textarea name="message" rows="5" required placeholder="Mesajınız" aria-label="Mesajınız"
+                  style="padding:.8rem;border-radius:.8rem;background:#0b1220;border:1px solid var(--border);color:var(--text)"></textarea>
         <button class="btn primary" type="submit">Gönder</button>
       </form>
     </div>
