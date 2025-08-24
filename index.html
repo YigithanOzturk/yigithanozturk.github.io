@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yiğithan Öztürk — Portföy</title>
-  <meta name="description" content="Projeler, yetenekler ve iletişim — modern, hızlı ve erişilebilir." />
+  <meta name="description" content="Jr. Full‑Stack Developer — HTML, CSS, JavaScript, React/Next.js; Python, C#, .NET Framework, Node.js. Linux geliştirme deneyimi ve kullanıcı odaklı çözümler." />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="assets/img/favicon.png" />
+  <!-- OG / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Yiğithan Öztürk — Portföy">
   <meta property="og:description" content="Projeler, yazılar ve iletişim.">
@@ -24,24 +25,21 @@
         <a href="#projects">Projeler</a>
         <a href="#skills">Yetenekler</a>
         <a href="#contact">İletişim</a>
+        <a href="src/cv.html">CV</a>
         <a href="src/projects.html">Tüm Projeler</a>
         <a href="src/blog.html">Blog</a>
-        <a href="src/cv.html">CV</a>
-
       </nav>
-
-      <!-- Önce tema, sonra menü -->
       <button id="theme-toggle" class="menu-btn" aria-label="Tema değiştir">Tema</button>
       <button class="menu-btn" aria-label="Menüyü aç/kapat">Menü</button>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
     <div class="blob" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="reveal">
-        <p class="muted">Bilgisayar Mühendisi • Full‑stack Adayı</p>
+        <p class="muted">Bilgisayar Mühendisi • Jr. Full‑Stack Developer</p>
         <h1 class="h1">
           Merhaba, ben
           <span style="background:linear-gradient(90deg,#3b82f6,#8b5cf6,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent">
@@ -49,8 +47,13 @@
           </span>.
         </h1>
         <p class="lead">
-          Next.js, TypeScript, Tailwind ve PostgreSQL ağırlıklı; güvenli kimlik doğrulama
-          ve ölçeklenebilir mimari odaklı projeler geliştiriyorum. AI ve siber güvenlik ilgi alanım.
+          Çocukluk yıllarımdan beri teknolojiye tutkuluyum ve yaptığım işte her zaman en iyisini hedeflerim.
+          Şu anda Jr. Full‑Stack Developer olarak; front‑end’de <strong>HTML, CSS, JavaScript, React/Next.js</strong>,
+          back‑end’de <strong>Python, C#, .NET Framework, Node.js</strong> ile çalışıyorum. <strong>Linux</strong> ortamında geliştirme yapıyor;
+          kısa sürede adapte olup ekiplerin değer üreten ürünler geliştirmesine katkı sağlıyorum.
+        </p>
+        <p class="muted" style="margin-top:.6rem">
+          <strong>Stack:</strong> HTML • CSS • JavaScript (ES6+) • TypeScript • React • Next.js • TailwindCSS • Python • C# • .NET Framework • Node.js • Prisma • PostgreSQL • Docker • Git • Linux
         </p>
         <div class="actions">
           <a class="btn primary" href="#projects">Projelerime göz at</a>
@@ -72,24 +75,24 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- HAKKIMDA (kısa kutular) -->
   <section id="about" class="section" aria-labelledby="about-title">
     <div class="container">
       <h2 id="about-title">Hakkımda</h2>
       <p class="muted">Kısa özet</p>
       <div class="grid" style="grid-template-columns:1fr 2fr;gap:1.2rem;margin-top:1rem">
         <div class="card reveal">
-          <p><strong>Odak:</strong> Ürün odaklı geliştirme, uçtan uca dağıtım.</p>
-          <p><strong>Stack:</strong> React/Next.js, Node/Go, PostgreSQL, Docker.</p>
+          <p><strong>Odak:</strong> Kullanıcı odaklı, performanslı ve erişilebilir arayüzler.</p>
+          <p><strong>Rol:</strong> Jr. Full‑Stack (React/Next.js + Python/C#/.NET/Node.js)</p>
         </div>
         <div class="card reveal">
-          <p>Temiz arayüz, erişilebilirlik ve performans üçgenini önemsiyorum. Kod kalitesi, tip güvenliği ve otomasyon (CI/CD) benim için kritik.</p>
+          <p>Yeni teknolojileri hızlı öğrenir ve projelere kısa sürede katkı sağlarım. Hedefim, güçlü teknik altyapıyı net kullanıcı deneyimi ile birleştirip ekiplerle değer üreten ürünler geliştirmek.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- PROJELER -->
   <section id="projects" class="section" aria-labelledby="projects-title">
     <div class="container">
       <div style="display:flex;justify-content:space-between;align-items:end;gap:1rem">
@@ -99,34 +102,27 @@
         </div>
         <a class="btn" href="src/projects.html">Tüm projeler</a>
       </div>
-
-      <!-- Dinamik liste -->
       <div id="projects-list" class="grid projects" style="margin-top:1rem">
-        <noscript>
-          <p class="muted">
-            Projeleri görmek için JavaScript gerekli. Tüm liste:
-            <a class="btn" href="src/projects.html">Tüm projeler</a>
-          </p>
-        </noscript>
+        <noscript><p class="muted">Projeleri görmek için JavaScript gerekli. <a class="btn" href="src/projects.html">Tüm projeler</a></p></noscript>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- YETENEKLER -->
   <section id="skills" class="section" aria-labelledby="skills-title">
     <div class="container">
       <h2 id="skills-title">Yetenekler</h2>
       <p class="muted">HTML • CSS • JavaScript bilgimi öne çıkaran kısa kutular</p>
       <div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; margin-top:1rem">
         <div class="card reveal"><strong>Frontend</strong><p class="muted">React, Next.js, TS, Tailwind</p></div>
-        <div class="card reveal"><strong>Backend</strong><p class="muted">Node, Go, REST, Prisma</p></div>
-        <div class="card reveal"><strong>Veritabanı</strong><p class="muted">PostgreSQL, Index, Plan</p></div>
-        <div class="card reveal"><strong>Araçlar</strong><p class="muted">Docker, GitHub Actions</p></div>
+        <div class="card reveal"><strong>Backend</strong><p class="muted">Python, C#, .NET, Node, REST</p></div>
+        <div class="card reveal"><strong>Veritabanı</strong><p class="muted">PostgreSQL, Prisma</p></div>
+        <div class="card reveal"><strong>Araçlar</strong><p class="muted">Docker, GitHub Actions, Linux</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- İLETİŞİM -->
   <section id="contact" class="section" aria-labelledby="contact-title">
     <div class="container">
       <h2 id="contact-title">İletişim</h2>
@@ -143,12 +139,8 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    © <span id="year"></span> Yiğithan Öztürk — Tüm hakları saklıdır.
-  </footer>
-
-  <!-- Toast -->
+  <!-- FOOTER + TOAST -->
+  <footer class="footer">© <span id="year"></span> Yiğithan Öztürk — Tüm hakları saklıdır.</footer>
   <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <script src="assets/js/main.js"></script>
