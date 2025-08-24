@@ -3,6 +3,8 @@
   --bg:#0b1220; --card:#0f172a; --text:#e5e7eb;
   --muted:#94a3b8; --primary:#3b82f6; --primary-2:#8b5cf6; --accent:#22d3ee;
   --border:rgba(255,255,255,.08);
+    --surface:#0b1220;   
+  --chip:#0b1220cc;   
 }
 html{color-scheme:dark;}
 html,body{height:100%}
@@ -13,6 +15,8 @@ html[data-theme="light"]{
   --bg:#f8fafc; --card:#ffffff; --text:#0f172a;
   --muted:#475569; --primary:#2563eb; --primary-2:#7c3aed; --accent:#0891b2;
   --border:rgba(0,0,0,.08);
+  --surface:#ffffff;   
+  --chip:#e2e8f0;      
 }
 html[data-theme="light"]{ color-scheme:light; }
 
@@ -42,10 +46,59 @@ img{max-width:100%; display:block}
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .nav{display:flex;gap:1rem}
-.nav a{color:#cbd5e1;text-decoration:none;font-size:.95rem}
+.nav a{ color: var(--muted); text-decoration:none; font-size:.95rem }
+
 .nav a:hover,.nav a.active{color:var(--accent)}
 .menu-btn{display:none;border:1px solid var(--border);background:transparent;color:var(--text);
   padding:.5rem .6rem;border-radius:.7rem}
+
+/* === İsim gradyanı === */
+.name {
+  background: linear-gradient(90deg,var(--primary),var(--primary-2),var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  white-space: nowrap;  /* ad ve soyad aynı satırda kalsın */
+  letter-spacing: .2px;
+}
+
+/* === Hakkımda bölümüne renk dokunuşu === */
+#about h2{
+  position: relative; padding-bottom: .35rem;
+}
+#about h2::after{
+  content:""; position:absolute; left:0; bottom:0; width:88px; height:3px;
+  background: linear-gradient(90deg,var(--primary),var(--primary-2),var(--accent));
+  border-radius: 999px;
+}
+#about .card{
+  position: relative;
+}
+#about .card::before{
+  content:""; position:absolute; left:0; top:14px; bottom:14px; width:4px;
+  background: linear-gradient(180deg,var(--primary),var(--accent));
+  border-radius: 999px; opacity:.7;
+}
+#about strong{ color: var(--accent); }
+
+
+  /* Form yüzeyleri */
+input, textarea {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+input::placeholder, textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent); }
+input:focus-visible, textarea:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 60%, transparent);
+  outline-offset: 2px;
+}
+
+/* Rozetler (etiketler) */
+.badge{
+  background: var(--chip) !important;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
 
 /* Tema butonu masaüstünde de görünsün */
 #theme-toggle{display:inline-flex; margin-right:.5rem}
@@ -60,7 +113,17 @@ img{max-width:100%; display:block}
 }
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;padding:4rem 0 3rem}
 .h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.1;margin:.5rem 0}
-.lead{color:#cbd5e1;max-width:55ch}
+/* Lead metin: tema bazlı kontrast ayarı */
+html:not([data-theme="light"]) .lead{
+  /* KOYU tema: metni daha canlı yapmak için text yönünde ağır bas */
+  color: color-mix(in srgb, var(--text) 85%, var(--muted) 15%);
+}
+
+html[data-theme="light"] .lead{
+  /* AÇIK tema: fazla koyulaşmasın, muted ile dengeli kalsın */
+  color: color-mix(in srgb, var(--text) 60%, var(--muted) 40%);
+}
+
 .actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.25rem}
 .btn{
   display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;
@@ -82,6 +145,8 @@ img{max-width:100%; display:block}
 .grid.projects{grid-template-columns:repeat(3,minmax(0,1fr))}
 .project .thumb{aspect-ratio:16/9;border-radius:1rem;background:linear-gradient(120deg,#1d4ed8aa,#8b5cf6aa)}
 .project .meta{display:flex;justify-content:space-between;align-items:center;margin-top:.6rem;color:#cbd5e1;font-size:.9rem}
+.project .meta{ color: var(--muted); }
+
 .badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
 .badge{font-size:.75rem;padding:.35rem .6rem;border:1px solid var(--border);border-radius:999px;background:#0b1220cc}
 .project h3{transition:transform .2s ease}
@@ -163,4 +228,9 @@ img{max-width:100%; display:block}
   border:1px solid var(--border); color:var(--text);
 }
 
+ /*=== Card Corners ===*/
+.badge {
+  background: color-mix(in srgb, var(--card) 80%, var(--accent) 20%);
+  border-color: color-mix(in srgb, var(--border) 70%, var(--accent) 30%);
+}
 
