@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yigithanozturk.github.io/yigithanozturk.github.io/sitemap.xml

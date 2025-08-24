@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Next.js App Router ile RBAC",
+    "slug": "nextjs-rbac",
+    "date": "2025-07-01",
+    "tags": ["Next.js", "Prisma", "Auth"],
+    "excerpt": "App Router'da rol tabanlı erişimi pratik kurmanın püf noktaları.",
+    "content": "## Giriş\nRBAC kurgularken **policy** ve **guard** yapınız net olsun.\n\n```ts\n// example middleware\nexport function can(role: string){\n  return (user)=> user?.role === role;\n}\n```\n\nDaha fazlası için *prisma middleware* deneyin."
+  },
+  {
+    "title": "PostgreSQL Index Tüyoları",
+    "slug": "postgres-index-tips",
+    "date": "2025-06-10",
+    "tags": ["PostgreSQL", "DB"],
+    "excerpt": "Sorgu planlarını okuyarak doğru indexleri seçmek.",
+    "content": "### EXPLAIN ANALYZE\n`EXPLAIN ANALYZE` çıktısını yorumlayarak **slow query** noktalarını bulun.\n\n- Composite index\n- Partial index\n- Covering (INCLUDE)\n"
+  }
+]

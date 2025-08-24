@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blog — Yiğithan Öztürk</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="../assets/img/favicon.png" />
+  <meta name="description" content="Teknik yazılarım ve notlarım." />
+</head>
+<body>
+<header class="navbar"><div class="container navbar-inner">
+  <a class="brand" href="../index.html">yigithan.dev</a>
+  <nav class="nav" aria-label="Ana menü">
+    <a href="../index.html#about">Hakkımda</a>
+    <a href="../index.html#projects">Projeler</a>
+    <a href="../index.html#skills">Yetenekler</a>
+    <a href="../index.html#contact">İletişim</a>
+    <a href="./cv.html">CV</a>
+    <a href="./blog.html" class="active">Blog</a>
+  </nav>
+  <button id="theme-toggle" class="menu-btn" aria-label="Tema değiştir">Tema</button>
+  <button class="menu-btn" aria-label="Menüyü aç/kapat">Menü</button>
+</div></header>
+
+<section class="section" aria-labelledby="title"><div class="container">
+  <h2 id="title">Blog</h2>
+  <p class="muted">Teknik notlar, ipuçları, mini yazılar.</p>
+
+  <!-- Arama -->
+  <div class="card" style="margin:1rem 0; display:flex; gap:.6rem; align-items:center">
+    <input id="blog-search" placeholder="Yazılarda ara..." style="flex:1; padding:.7rem; border-radius:.7rem; background:#0b1220; border:1px solid var(--border); color:var(--text)" />
+    <button class="btn" id="blog-clear">Temizle</button>
+  </div>
+
+  <!-- Liste -->
+  <div id="blog-list" class="grid" style="grid-template-columns:1fr 1fr; gap:1rem"></div>
+
+  <!-- Tek yazı -->
+  <article id="blog-post" class="card reveal" style="margin-top:1rem; display:none">
+    <a class="btn" href="./blog.html" style="margin-bottom:.6rem">← Tüm yazılar</a>
+    <h1 id="post-title"></h1>
+    <p class="muted" id="post-meta" style="margin:.2rem 0 1rem"></p>
+    <div id="post-content"></div>
+  </article>
+</div></section>
+
+<footer class="footer">© <span id="year"></span> Yiğithan Öztürk</footer>
+<div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

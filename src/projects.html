@@ -12,6 +12,7 @@
     <a href="../index.html#projects" class="active">Projeler</a>
     <a href="../index.html#skills">Yetenekler</a>
     <a href="../index.html#contact">İletişim</a>
+    <a href="./blog.html">Blog</a>
     <a href="src/cv.html">CV</a>
 
   </nav>
@@ -22,6 +23,14 @@
 <section class="section" aria-labelledby="title"><div class="container">
   <h2 id="title">Tüm Projeler</h2>
   <p class="muted">Aşağıdaki kartlar JSON verisinden yüklenir. (assets/data/projects.json)</p>
+  <div class="card" style="margin:1rem 0">
+  <div style="display:flex; flex-wrap:wrap; gap:.6rem; align-items:center">
+    <input id="proj-search" placeholder="Projelerde ara..." style="flex:1; min-width:220px; padding:.7rem; border-radius:.7rem; background:#0b1220; border:1px solid var(--border); color:var(--text)" />
+    <div id="proj-tags" style="display:flex; flex-wrap:wrap; gap:.4rem"></div>
+    <button class="btn" id="proj-clear">Temizle</button>
+  </div>
+</div>
+
   <div id="projects-all" class="grid projects" style="margin-top:1rem">
     <noscript><p class="muted">JavaScript kapalı görünüyor. JSON’dan yükleme yapılamadı.</p></noscript>
   </div>
