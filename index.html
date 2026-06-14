@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yiğithan Öztürk — Full-Stack Developer & Bilgisayar Mühendisi</title>
+  <meta name="description" content="Yiğithan Öztürk — Full-Stack Developer. React, Next.js, TypeScript, Python, C#/.NET ile donanımdan arayüze, fikirden ürüne geliştirme.">
+  <meta name="author" content="Yiğithan Öztürk">
+  <link rel="canonical" href="https://yigithanozturk.github.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yigithanozturk.github.io/">
+  <meta property="og:title" content="Yiğithan Öztürk — Full-Stack Developer">
+  <meta property="og:image" content="https://yigithanozturk.github.io/assets/img/og-image.png">
+  <meta property="og:description" content="Donanımdan arayüze, fikirden ürüne. React, Next.js, TypeScript, Python, C#/.NET.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://yigithanozturk.github.io/assets/img/og-image.png">
+  <meta name="twitter:title" content="Yiğithan Öztürk — Full-Stack Developer">
+  <meta name="twitter:description" content="Donanımdan arayüze, fikirden ürüne.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23060B16'/%3E%3Crect x='4.5' y='4.5' width='23' height='23' rx='4' fill='none' stroke='%234DA6FF' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='700' fill='%236FD2FF' text-anchor='middle'%3EY%C3%96%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yiğithan Öztürk",
+    "jobTitle": "Full-Stack Developer",
+    "url": "https://yigithanozturk.github.io/",
+    "sameAs": [
+      "https://github.com/YigithanOzturk",
+      "https://linkedin.com/in/yigithanozturk"
+    ],
+    "address": { "@type": "PostalAddress", "addressLocality": "Zonguldak", "addressCountry": "TR" }
+  }
+  </script>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#hakkimda">İçeriğe geç</a>
+
+  <!-- ======== NAV ======== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Ana sayfa">
+        <span class="brand-chip">YÖ</span>
+        <span class="brand-name">yigithanozturk<span class="brand-dim">.dev</span></span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Bölümler">
+        <a href="#hakkimda" data-i18n="nav.about">Hakkımda</a>
+        <a href="#deneyim" data-i18n="nav.exp">Deneyim</a>
+        <a href="projects.html" data-i18n="nav.projects">Projeler</a>
+        <a href="#yetenekler" data-i18n="nav.skills">Yetenekler</a>
+        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="cv.html">CV</a>
+        <a class="nav-cta" href="#iletisim" data-i18n="nav.contact">İletişim</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Tema değiştir / Toggle theme" title="Tema değiştir">
+        <svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12.7 2.3a1 1 0 0 0-1.1 1.4 7 7 0 0 1-9.3 9.3 1 1 0 0 0-1.4 1.1A9 9 0 1 0 12.7 2.3Z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></g></svg>
+      </button>
+      <button class="lang-toggle" id="lang-toggle" aria-label="Dil değiştir / Switch language">EN</button>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menüyü aç/kapat">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ======== HERO ======== -->
+    <section class="hero">
+      <svg class="hero-traces" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="cu" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#6FD2FF"/>
+            <stop offset="1" stop-color="#2E5BFF"/>
+          </linearGradient>
+        </defs>
+        <g class="trace-group" fill="none" stroke="url(#cu)" stroke-width="1.6">
+          <path class="trace" d="M 800 620 L 800 500 L 870 430 L 870 240 L 940 170 L 1160 170"/>
+          <path class="trace" d="M 30 600 L 430 600 L 505 525 L 1000 525 L 1070 455 L 1070 260"/>
+          <path class="trace" d="M 980 60 L 980 190 L 1030 240 L 1030 400"/>
+          <path class="trace" d="M 1175 565 L 1095 565 L 1040 510 L 900 510"/>
+          <path class="trace" d="M 740 40 L 740 110 L 800 170 L 800 300"/>
+        </g>
+        <g class="pulse-group" fill="none" stroke="#BFE9FF" stroke-width="2.4" stroke-linecap="round">
+          <path class="pulse" d="M 800 620 L 800 500 L 870 430 L 870 240 L 940 170 L 1160 170"/>
+          <path class="pulse" d="M 30 600 L 430 600 L 505 525 L 1000 525 L 1070 455 L 1070 260"/>
+          <path class="pulse" d="M 980 60 L 980 190 L 1030 240 L 1030 400"/>
+          <path class="pulse" d="M 1175 565 L 1095 565 L 1040 510 L 900 510"/>
+          <path class="pulse" d="M 740 40 L 740 110 L 800 170 L 800 300"/>
+        </g>
+        <g class="via-group" fill="#060B16" stroke="url(#cu)" stroke-width="1.6">
+          <circle class="via" cx="800" cy="620" r="5"/>
+          <circle class="via" cx="1160" cy="170" r="5"/>
+          <circle class="via" cx="30"  cy="600" r="5"/>
+          <circle class="via" cx="1070" cy="260" r="5"/>
+          <circle class="via" cx="980" cy="60"  r="5"/>
+          <circle class="via" cx="1030" cy="400" r="5"/>
+          <circle class="via" cx="1175" cy="565" r="5"/>
+          <circle class="via" cx="900" cy="510" r="5"/>
+          <circle class="via" cx="740" cy="40"  r="5"/>
+          <circle class="via" cx="800" cy="300" r="5"/>
+        </g>
+        <g class="pad-group" fill="url(#cu)">
+          <rect class="pad" x="864" y="324" width="12" height="12" rx="2"/>
+          <rect class="pad" x="1064" y="344" width="12" height="12" rx="2"/>
+          <rect class="pad" x="1024" y="304" width="12" height="12" rx="2"/>
+        </g>
+      </svg>
+
+      <div class="hero-inner">
+        <p class="hero-kicker reveal" data-i18n="hero.kicker">ZONGULDAK, TR &nbsp;·&nbsp; <span class="status-dot" aria-hidden="true"></span> İŞ BİRLİKLERİNE AÇIK</p>
+        <h1 class="hero-name">
+          <span class="line reveal d1">Yiğithan</span>
+          <span class="line copper reveal d2">Öztürk</span>
+        </h1>
+        <p class="hero-role reveal d3" data-i18n="hero.role">Full-Stack Developer <span class="amp">&amp;</span> Bilgisayar Mühendisi</p>
+        <p class="hero-sub reveal d4" data-i18n="hero.sub">
+          Bilgisayar mühendisliği altyapımı, elektroniğin ve donanımın somut dünyasıyla harmanlayan çok yönlü bir geliştiriciyim. 
+          Benim için mühendislik; web arayüzlerinden güçlü backend servislerine, sunucu mimarilerinden donanım katmanına kadar uzanan kesintisiz bir köprü.
+          Sadece ekranda çalışan kodlar yazmayı değil; yazılım ile sistemi bir bütün olarak düşünmeyi, teknolojinin her katmanına dokunarak uçtan uca çözümler üretmeyi seviyorum.
+        </p>
+        <div class="hero-actions reveal d5">
+          <a class="btn btn-copper" href="#projeler" data-i18n="hero.cta">Projeler</a>
+          <a class="btn btn-ghost" href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/yigithanozturk" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <div class="hero-meta reveal d6" aria-hidden="true">
+          <span>REV 2.4</span><span>EST. 2024</span><span>41.45°N · 31.79°E</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== TAPE REEL (TECH STRIP) ======== -->
+    <div class="tape" aria-label="Teknolojiler">
+      <div class="tape-track">
+        <div class="tape-row">
+          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Python</span><span>C#</span><span>.NET</span><span>Node.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Prisma</span><span>Docker</span><span>Linux</span><span>Git</span>
+        </div>
+        <div class="tape-row" aria-hidden="true">
+          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Python</span><span>C#</span><span>.NET</span><span>Node.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Prisma</span><span>Docker</span><span>Linux</span><span>Git</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== HAKKIMDA ======== -->
+    <section class="section" id="hakkimda">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="about.eyebrow">Hakkımda</span>
+        <h2 data-i18n="about.title">Bir hayalden, <br> <em>Gerçeğe Dokunan Çözümlere</em>.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p data-i18n="about.p1">
+            Benim hikayem, henüz 5 yaşındayken kurduğum ve o günden beri peşini bırakmadığım bir bilgisayar mühendisliği hayaliyle başladı.
+            Zamanla bu merak, her zaman en iyisini hedefleyen, kararlı bir çalışma disiplinine dönüştü.
+            Lügatında "bilmiyorum" kelimesine yer olmayan, karşılaştığı problemi tam anlamıyla çözene kadar durmayan ve yarım kalan işlerden nefret eden bir yapıya sahibim.
+          </p>
+          <p data-i18n="about.p2">
+            Bu bitmek bilmeyen öğrenme açlığı, beni teknolojinin tek bir katmanıyla sınırlamadı.
+            Web dünyasında <strong>React</strong>, <strong>Next.js</strong> ve <strong>TypeScript</strong> ile modern kullanıcı deneyimleri tasarlarken; arka planda <strong>C#/.NET </strong> ve <strong> Python </strong> ile güçlü servisler inşa ediyorum.
+            Gerektiğinde ise sunucu kurulumundan donanım masasına kadar işin her aşamasında aktif rol alıyorum.
+          </p>
+          <p data-i18n="about.p3">
+            Yazılımın zekasını donanımın somut dünyasıyla birleştirmek adına <strong>Elektrik-Elektronik Mühendisliği</strong> yüksek lisansıma devam ediyorum.
+            Hem bit'lerin hem de elektronların dünyasına dokunabilmek, sorunlara tek bir açıdan değil, bütünsel bir sistem mimarisi gözüyle bakmamı sağlıyor.
+          </p>
+        </div>
+        <aside class="datasheet reveal" aria-label="Özet bilgiler">
+          <div class="ds-head">
+            <span>DATASHEET</span>
+            <span class="ds-id">YÖ-2001</span>
+          </div>
+          <dl class="ds-body">
+            <div><dt data-i18n="ds.role">Rol</dt><dd>Full-Stack Developer</dd></div>
+            <div><dt data-i18n="ds.company">Şirket</dt><dd>2M Kurumsal AZETech</dd></div>
+            <div><dt data-i18n="ds.msc">Yüksek Lisans</dt><dd>EEM — ZBEÜ</dd></div>
+            <div><dt data-i18n="ds.bsc">Lisans</dt><dd>Bilgisayar Müh. — ZBEÜ</dd></div>
+            <div><dt data-i18n="ds.location">Konum</dt><dd data-i18n="ds.location.v">Zonguldak, Türkiye</dd></div>
+            <div><dt data-i18n="ds.focus">Odak</dt><dd data-i18n="ds.focus.v">Web · Sistem · Donanım · Elektronik</dd></div>
+            <div><dt data-i18n="ds.status">Durum</dt><dd><span class="status-dot" aria-hidden="true"></span> <span data-i18n="ds.status.v">Açık</span></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+
+    <!-- ======== İSTATİSTİKLER & GITHUB ======== -->
+    <section class="section" id="istatistik">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="stats.eyebrow">Rakamlarla</span>
+        <h2 data-i18n="stats.title">Sayılar <em>yalan söylemez</em>.</h2>
+      </div>
+      <div class="stats-row reveal">
+        <div class="stat"><span class="stat-num" data-count="3">0</span><span class="stat-suffix">+</span><span class="stat-label" data-i18n="stats.years">Yıl kod deneyimi</span></div>
+        <div class="stat"><span class="stat-num" data-count="10">0</span><span class="stat-suffix">+</span><span class="stat-label" data-i18n="stats.projects">Tamamlanan proje</span></div>
+        <div class="stat"><span class="stat-num" data-count="15">0</span><span class="stat-suffix">+</span><span class="stat-label" data-i18n="stats.tech">Teknoloji</span></div>
+        <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-suffix"></span><span class="stat-label" data-i18n="stats.degrees">Mühendislik diploması</span></div>
+      </div>
+      <div class="gh-panel reveal" id="gh-panel">
+        <div class="gh-head">
+          <span class="gh-title">// GITHUB — CANLI</span>
+          <a href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">@YigithanOzturk ↗</a>
+        </div>
+        <div class="gh-body" id="gh-body">
+          <p class="gh-loading" data-i18n="stats.loading">GitHub verileri yükleniyor…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== DENEYİM & EĞİTİM ======== -->
+    <section class="section" id="deneyim">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="exp.eyebrow">Deneyim &amp; Eğitim</span>
+        <h2 data-i18n="exp.title">Bugüne kadarki <em>rota</em>.</h2>
+      </div>
+      <div class="timeline">
+        <article class="t-item reveal">
+          <span class="t-date" data-i18n="exp.1.date">2024 — Halen</span>
+          <h3 data-i18n="exp.1.role">Full-Stack Developer · 2M Kurumsal AZETech</h3>
+          <p data-i18n="exp.1.desc">React, Next.js ve TypeScript ile modern arayüz mimarilerini uçtan uca inşa ederken, arka planda C#/.NET ve Python servislerini konuşturuyorum. Mühendisliği sadece kod yazmaktan ibaret görmediğim için sunucu kurulumu, altyapı yönetimi ve ağ/cihaz arıza tespitleri gibi operasyonel süreçleri de üstlenerek sistemlerin her an kararlı ve ayakta kalmasını sağlıyorum.</p>
+        </article>
+        <article class="t-item reveal">
+          <span class="t-date" data-i18n="exp.2.date">2025 — Devam</span>
+          <h3 data-i18n="exp.2.role">Yüksek Lisans · Elektrik-Elektronik Müh. — ZBEÜ</h3>
+          <p data-i18n="exp.2.desc">Yazılımın soyut dünyasından elektroniğin somut gerçekliğine adım attığım, teoriyi fiziksel dünyayla buluşturan akademik serüven. Kod satırlarının elektronlarla nasıl konuştuğunu ve fiziksel sistemlere nasıl can verdiğini keşfederek, mühendislik vizyonumu iki disiplinin kesişim noktasında derinleştiriyorum.</p>
+        </article>
+        <article class="t-item reveal">
+          <span class="t-date" data-i18n="exp.3.date">2023</span>
+          <h3 data-i18n="exp.3.role">Bilgisayar Mühendisliği Stajyeri · 2M Kurumsal AZETech</h3>
+          <p data-i18n="exp.3.desc">Sektörle ve profesyonel projelerle ilk güçlü tanışma. Kullanıcı arayüzü geliştirmenin ötesine geçerek SNMP ile cihaz izleme, sunucu konfigürasyonları ve hastane bilgi işlem altyapı bakımı gibi kritik operasyonlarda yer aldım; sistem ve donanım dünyasına duyduğum tutkunun ilk kıvılcımlarını burada ateşledim.</p>
+        </article>
+        <article class="t-item reveal">
+          <span class="t-date" data-i18n="exp.4.date">2020 — 2024</span>
+          <h3 data-i18n="exp.4.role">Lisans · Bilgisayar Mühendisliği — ZBEÜ</h3>
+          <p data-i18n="exp.4.desc">Yazılım mimarileri, veritabanı yönetim sistemleri ve yapay zeka temelleriyle örülü yoğun bir eğitim dönemi. Bu süreci, teorik birikimimi işlevsel bir ürüne dönüştürerek geliştirdiğim QR kod tabanlı dinamik yoklama sistemi bitirme projesiyle başarıyla tamamladım.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======== PROJELER ======== -->
+    <section class="section" id="projeler">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="proj.eyebrow">Projeler</span>
+        <h2 data-i18n="proj.title">Fikirden <em>ürüne</em> dönüşenler.</h2>
+      </div>
+      <div class="projects">
+        <a class="card card-wide reveal proj-preview" href="projects.html#monitor"><span class="sweep" aria-hidden="true"></span>
+          <div class="card-top"><span class="card-tag-featured" data-i18n="proj.featured">ÖNE ÇIKAN</span></div>
+          <h3>SysWatch — Sistem &amp; Donanım İzleme</h3>
+          <p data-i18n="proj.monitor.short">Bilgisayarın anlık durumunu, sistem ve donanım sorunlarını tek ekranda gösteren bir izleme uygulaması. Sorunları büyümeden fark etmek için tasarladım.</p>
+          <ul class="tags"><li>Python</li><li>Sistem</li><li>Donanım</li></ul>
+        </a>
+
+        <a class="card reveal proj-preview" href="projects.html#qr"><span class="sweep" aria-hidden="true"></span>
+          <h3>QR Kodlu Yoklama Sistemi</h3>
+          <p data-i18n="proj.qr.short">QR kod okutarak hızlı ve güvenilir yoklama alan, raporlama destekli web sistemi. Lisans bitirme projem.</p>
+          <ul class="tags"><li>Full-Stack</li><li>Web</li></ul>
+        </a>
+
+        <a class="card reveal proj-preview" href="projects.html#easyytd"><span class="sweep" aria-hidden="true"></span>
+          <h3>EasyYTD — Video/Ses İndirme Programı</h3>
+          <p data-i18n="proj.easyytd.short">Farklı platformlardan video ve ses indirmeyi tek tıkla halleden, sade bir masaüstü uygulaması.</p>
+          <ul class="tags"><li>Python</li><li>yt-dlp</li></ul>
+        </a>
+      </div>
+      <p class="projects-more reveal">
+        <a class="btn btn-ghost" href="projects.html" data-i18n="proj.all">Tüm projeleri gör →</a>
+      </p>
+    </section>
+
+
+    <!-- ======== ÖNE ÇIKAN PROJE — LAB ======== -->
+    <section class="section" id="lab">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="lab.eyebrow">Yakın Plan</span>
+        <h2 data-i18n="lab.title">SysWatch — bir <em>sistemin nabzı</em>.</h2>
+      </div>
+      <div class="jarvis-grid">
+        <div class="jarvis-text reveal">
+          <p data-i18n="lab.p1">Bir bilgisayarın o an ne durumda olduğunu görmek bazen sandığından zor. İşlemci ısınıyor mu, disk dolmak üzere mi, bir donanım parçası sorun çıkarmaya mı başladı? SysWatch tam da bunun için: sistemin ve donanımın durumunu tek bir ekranda, anlık olarak önüne koyuyor.</p>
+          <p data-i18n="lab.p2">Amaç sadece sayıları göstermek değil; bir şey ters gitmeye başladığında bunu büyümeden fark etmek. Sıcaklık, kullanım ve sağlık değerlerini takip ediyor, eşik aşıldığında uyarı veriyor ve geçmişe dönük kayıt tutuyor.</p>
+          <ul class="roadmap">
+            <li class="done"><span class="rm-tag">İZLE</span><span data-i18n="lab.f1">CPU, RAM, disk ve sıcaklık değerlerini canlı takip</span></li>
+            <li class="done"><span class="rm-tag">TARA</span><span data-i18n="lab.f2">Donanım sağlığı ve sistemdeki olası arızaların tespiti</span></li>
+            <li class="done"><span class="rm-tag">UYAR</span><span data-i18n="lab.f3">Eşik aşıldığında anlık bildirim ve uyarılar</span></li>
+            <li class="done"><span class="rm-tag">KAYIT</span><span data-i18n="lab.f4">Geçmişe dönük log ve raporlama</span></li>
+          </ul>
+        </div>
+        <div class="jarvis-diagram reveal" aria-label="SysWatch mimari diyagramı">
+          <svg viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg" role="img">
+            <defs>
+              <linearGradient id="jg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#6FD2FF"/><stop offset="1" stop-color="#8B5CF6"/>
+              </linearGradient>
+              <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0 L8 4 L0 8 z" fill="#4DA6FF"/>
+              </marker>
+            </defs>
+            <!-- sensors (left column) -->
+            <rect x="16" y="24" width="120" height="40" rx="8" class="jbox"/>
+            <text x="76" y="49" class="jtext">CPU / GPU</text>
+            <rect x="16" y="92" width="120" height="40" rx="8" class="jbox"/>
+            <text x="76" y="117" class="jtext">RAM / Disk</text>
+            <rect x="16" y="160" width="120" height="40" rx="8" class="jbox"/>
+            <text x="76" y="179" class="jtext">Sıcaklık</text>
+            <text x="76" y="193" class="jsub">sensörler</text>
+            <rect x="16" y="228" width="120" height="40" rx="8" class="jbox"/>
+            <text x="76" y="247" class="jtext">Donanım</text>
+            <text x="76" y="261" class="jsub">S.M.A.R.T / sağlık</text>
+            <!-- collector core -->
+            <rect x="178" y="120" width="110" height="64" rx="10" class="jbox jbox-core"/>
+            <text x="233" y="148" class="jtext">Toplayıcı</text>
+            <text x="233" y="164" class="jsub">çekirdek</text>
+            <!-- outputs (right column) -->
+            <rect x="324" y="40" width="120" height="44" rx="8" class="jbox"/>
+            <text x="384" y="61" class="jtext">Panel</text>
+            <text x="384" y="75" class="jsub">canlı gösterge</text>
+            <rect x="324" y="140" width="120" height="44" rx="8" class="jbox"/>
+            <text x="384" y="161" class="jtext">Uyarılar</text>
+            <text x="384" y="175" class="jsub">eşik / bildirim</text>
+            <rect x="324" y="240" width="120" height="44" rx="8" class="jbox"/>
+            <text x="384" y="261" class="jtext">Kayıt</text>
+            <text x="384" y="275" class="jsub">log &amp; rapor</text>
+            <!-- arrows in -->
+            <path d="M136 44 L174 132" class="jarrow"/>
+            <path d="M136 112 L174 142" class="jarrow"/>
+            <path d="M136 180 L174 158" class="jarrow"/>
+            <path d="M136 248 L174 172" class="jarrow"/>
+            <!-- arrows out -->
+            <path d="M288 140 L322 70" class="jarrow"/>
+            <path d="M288 152 L322 160" class="jarrow"/>
+            <path d="M288 164 L322 254" class="jarrow"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== KOD DIŞINDA (ileride aktif edilecek — yorumda) ========
+    <section class="section" id="kod-disinda">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="life.eyebrow">Kod Dışında</span>
+        <h2 data-i18n="life.title">Klavyeden uzakta da <em>üretiyorum</em>.</h2>
+      </div>
+      <div class="life-grid">
+        <div class="life-card reveal">
+          <span class="life-icon">🏋️</span>
+          <h3 data-i18n="life.fitness.t">Fitness</h3>
+          <p data-i18n="life.fitness.p">Disiplinli antrenman programı ve beslenme takibi. Vücut da bir sistem — optimize edilmeyi hak ediyor.</p>
+        </div>
+        <div class="life-card reveal">
+          <span class="life-icon">⚽</span>
+          <h3 data-i18n="life.football.t">Futbol &amp; EA FC</h3>
+          <p data-i18n="life.football.p">Sahada halı saha maçları, ekranda kadro kurma ve taktik optimizasyonu. İkisi de strateji işi.</p>
+        </div>
+        <div class="life-card reveal">
+          <span class="life-icon">🥊</span>
+          <h3 data-i18n="life.combat.t">Dövüş Sporları</h3>
+          <p data-i18n="life.combat.p">Boks ve dövüş sporlarına yakın ilgi. Odak, refleks ve baskı altında sakin kalma antrenmanı.</p>
+        </div>
+        <div class="life-card reveal">
+          <span class="life-icon">🎵</span>
+          <h3 data-i18n="life.music.t">Müzik &amp; Söz Yazarlığı</h3>
+          <p data-i18n="life.music.p">Türkçe söz yazıyorum; sırada gitar, piyano ve davul var. Yaratıcılığın başka bir dili.</p>
+        </div>
+      </div>
+    </section>
+    ======== /KOD DIŞINDA ======== -->
+
+    <!-- ======== YETENEKLER ======== -->
+    <section class="section" id="yetenekler">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="skills.eyebrow">Yetenekler</span>
+        <h2 data-i18n="skills.title">Teknik Altyapı — <em>katman katman</em>.</h2>
+      </div>
+      <div class="skills">
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.frontend">Frontend</h3>
+          <ul><li>React · Next.js</li><li>TypeScript · JavaScript</li><li>Tailwind CSS · HTML/CSS</li><li>Erişilebilir, hızlı arayüzler</li></ul>
+        </div>
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.backend">Backend</h3>
+          <ul><li>C# · .NET</li><li>Python · FastAPI</li><li>Node.js · REST API</li><li>Kimlik doğrulama · RBAC</li></ul>
+        </div>
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.sys">Sistem &amp; Donanım</h3>
+          <ul><li>Sunucu kurulumu &amp; bakımı</li><li>Arıza tespiti &amp; sorun giderme</li><li>Ağ · SNMP ile cihaz izleme</li><li>Linux</li></ul>
+        </div>
+        <div class="skill-col reveal">
+          <h3 data-i18n="skills.data">Veri &amp; Mühendislik</h3>
+          <ul><li>PostgreSQL · Docker · Git</li><li>Makine öğrenmesi (XGBoost, MLP)</li><li>Sayısal sinyal işleme</li><li>Veri analizi</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== İLETİŞİM ======== -->
+    <section class="section section-contact" id="iletisim">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="contact.eyebrow">İletişim</span>
+        <h2 data-i18n="contact.title">Aklınızda bir proje mi var?<br><em>Konuşalım.</em></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p data-i18n="contact.p">Bir iş, bir fikir ya da sadece tanışmak için yazmak isterseniz çekinmeyin. Mesajları genellikle bir gün içinde yanıtlarım.</p>
+          <a class="contact-mail" href="mailto:yigithanozturk.dev@gmail.com">yigithanozturk.dev@gmail.com</a>
+          <div class="contact-socials">
+            <a href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://linkedin.com/in/yigithanozturk" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <label>
+            <span data-i18n="contact.name">İsim</span>
+            <input type="text" name="name" autocomplete="name" required placeholder="Adınız">
+          </label>
+          <label>
+            <span data-i18n="contact.email">E-posta</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="ornek@mail.com">
+          </label>
+          <label>
+            <span data-i18n="contact.msg">Mesaj</span>
+            <textarea name="message" rows="4" required placeholder="Projenizden bahsedin…"></textarea>
+          </label>
+          <button class="btn btn-copper" type="submit" data-i18n="contact.send">Mesaj gönder</button>
+          <p class="form-note" id="form-note" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© <span id="year">2026</span> Yiğithan Öztürk</span>
+      <span class="footer-rev" data-i18n="footer.madein">PCB REV 2.4 —  &amp; </span>
+      <span class="footer-actions">
+        <button class="terminal-launch" id="terminal-launch" title="Terminali aç ( ` tuşu )">&gt;_ terminal</button>
+        <a href="#top" aria-label="Yukarı dön">↑ Başa dön</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ======== FUTBOL TOPU MİNİGAME ======== -->
+  <div class="kickup" id="kickup" aria-hidden="false">
+    <div class="kickup-score" id="kickup-score" hidden>
+      <span class="kickup-count" id="kickup-count">0</span>
+      <span class="kickup-best" id="kickup-best"></span>
+    </div>
+    <button class="kickup-ball" id="kickup-ball" aria-label="Topa tıkla ve sektir / Keepie-uppie">
+      <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+        <defs>
+          <radialGradient id="ballsh" cx="38%" cy="32%" r="70%">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#cdd6e4"/>
+          </radialGradient>
+        </defs>
+        <circle cx="24" cy="24" r="22" fill="url(#ballsh)" stroke="#0a0f1a" stroke-width="1"/>
+        <path fill="#0b1424" d="M24 9l6.5 4.7-2.5 7.6h-8L17.5 13.7z"/>
+        <path fill="#0b1424" d="M10.5 22.2l6.2 0.2 2.3 7.2-5.1 4.6-5-3.8z"/>
+        <path fill="#0b1424" d="M37.5 22.2l-6.2 0.2-2.3 7.2 5.1 4.6 5-3.8z"/>
+        <path fill="#0b1424" d="M19.5 36.2l4.5-3 4.5 3-1.6 5.2a18 18 0 0 1-5.8 0z"/>
+        <g stroke="#0b1424" stroke-width="1.1" fill="none" opacity=".5">
+          <path d="M24 2v7M2 18l8.5 4M46 18l-8.5 4M11 44l6-7M37 44l-6-7"/>
+        </g>
+      </svg>
+    </button>
+  </div>
+
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ======== TERMINAL EASTER EGG ======== -->
+  <div class="terminal-overlay" id="terminal" hidden>
+    <div class="terminal-window" role="dialog" aria-label="Terminal">
+      <div class="terminal-bar">
+        <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+        <span class="terminal-title">yigithan@dev — zsh</span>
+        <button class="terminal-close" id="terminal-close" aria-label="Terminali kapat">✕</button>
+      </div>
+      <div class="terminal-body" id="terminal-body"></div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">$</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal komutu">
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

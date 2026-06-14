@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Yiğithan Öztürk</title>
+  <meta name="description" content="Yiğithan Öztürk'ün yazılım, mühendislik ve yapay zekâ üzerine notları.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23060B16'/%3E%3Crect x='4.5' y='4.5' width='23' height='23' rx='4' fill='none' stroke='%234DA6FF' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='700' fill='%236FD2FF' text-anchor='middle'%3EY%C3%96%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* blog-only styles */
+    .blog-wrap { max-width: var(--maxw); margin: 0 auto; padding: 8rem var(--pad) 5rem; position: relative; z-index: 1; }
+    .blog-list { display: grid; gap: 1.2rem; margin-top: 2.5rem; }
+    .post-card {
+      border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);
+      padding: 1.5rem; cursor: pointer; transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .post-card:hover { transform: translateY(-4px); border-color: rgba(77,166,255,.5); box-shadow: 0 0 24px rgba(46,91,255,.14); }
+    .post-meta { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em; color: var(--steel); display: flex; gap: 1rem; flex-wrap: wrap; }
+    .post-card h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; margin: .5rem 0 .4rem; }
+    .post-card p { color: var(--muted); font-size: .95rem; }
+    .post-tags { display: flex; gap: .45rem; margin-top: .8rem; flex-wrap: wrap; }
+    .post-tags span { font-family: var(--font-mono); font-size: .7rem; color: var(--steel); border: 1px solid var(--line-soft); border-radius: 4px; padding: .15rem .5rem; }
+    .post-view { display: none; margin-top: 2.5rem; }
+    .post-view.show { display: block; }
+    .post-view .back { font-family: var(--font-mono); font-size: .85rem; display: inline-block; margin-bottom: 1.5rem; }
+    .post-body { color: var(--muted); max-width: 46rem; }
+    .post-body h2, .post-body h3 { color: var(--silk); margin: 1.6rem 0 .6rem; font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; }
+    .post-body p { margin: .8rem 0; }
+    .post-body ul { margin: .8rem 0 .8rem 1.2rem; }
+    .post-body code { font-family: var(--font-mono); font-size: .85em; background: var(--panel-2); border: 1px solid var(--line-soft); border-radius: 4px; padding: .1em .4em; color: var(--volt-bright); }
+    .post-body pre { background: #070D1A; border: 1px solid var(--line); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+    .post-body pre code { background: none; border: 0; padding: 0; color: var(--silk); font-size: .82rem; }
+    .blog-empty { font-family: var(--font-mono); color: var(--steel); margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Ana sayfa">
+        <span class="brand-chip">YÖ</span>
+        <span class="brand-name">yigithanozturk<span class="brand-dim">.dev</span></span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Bölümler">
+        <a href="index.html#hakkimda">Hakkımda</a>
+        <a href="index.html#projeler">Projeler</a>
+        <a class="active" href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
+        <a class="nav-cta" href="index.html#iletisim">İletişim</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+        <svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12.7 2.3a1 1 0 0 0-1.1 1.4 7 7 0 0 1-9.3 9.3 1 1 0 0 0-1.4 1.1A9 9 0 1 0 12.7 2.3Z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></g></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menüyü aç/kapat">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="blog-wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="--w:34px">Blog</span>
+      <h2>Notlar, denemeler, <em>öğrendiklerim</em>.</h2>
+    </div>
+
+    <div class="blog-list" id="blog-list"></div>
+
+    <article class="post-view" id="post-view">
+      <a class="back" href="#" id="post-back">← Tüm yazılar</a>
+      <div class="post-meta" id="post-meta"></div>
+      <h2 id="post-title" style="font-family:var(--font-display);font-weight:700;font-size:1.7rem;margin:.6rem 0 1rem;"></h2>
+      <div class="post-body" id="post-body"></div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© <span id="year">2026</span> Yiğithan Öztürk</span>
+      <a href="index.html">← Ana sayfa</a>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    "use strict";
+    // nav toggle
+    const t = document.getElementById("nav-toggle"), l = document.getElementById("nav-links");
+    t?.addEventListener("click", () => {
+      const open = l.classList.toggle("open");
+      t.setAttribute("aria-expanded", String(open));
+    });
+    // progress
+    const bar = document.getElementById("progress");
+    const upd = () => {
+      const h = document.documentElement, m = h.scrollHeight - h.clientHeight;
+      bar.style.width = m > 0 ? (h.scrollTop / m) * 100 + "%" : "0%";
+    };
+    window.addEventListener("scroll", upd, { passive: true }); upd();
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (() => {
+      let theme = "dark";
+      try { theme = localStorage.getItem("theme") || "dark"; } catch (e) {}
+      const apply = (x) => { if (x === "light") document.documentElement.setAttribute("data-theme", "light"); else document.documentElement.removeAttribute("data-theme"); try { localStorage.setItem("theme", x); } catch (e) {} };
+      apply(theme);
+      document.getElementById("theme-toggle")?.addEventListener("click", () => { theme = theme === "light" ? "dark" : "light"; apply(theme); });
+    })();
+
+
+    // minimal markdown renderer (headings, code fences, inline code, bold, italics, lists)
+    const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+    function md(src) {
+      const parts = src.split(/```/);
+      let out = "";
+      parts.forEach((part, i) => {
+        if (i % 2 === 1) { // code block
+          const lines = part.split("\n");
+          lines.shift(); // language hint
+          out += "<pre><code>" + esc(lines.join("\n").trim()) + "</code></pre>";
+          return;
+        }
+        const lines = part.split("\n");
+        let inList = false;
+        lines.forEach((line) => {
+          let h = esc(line);
+          h = h.replace(/`([^`]+)`/g, "<code>$1</code>")
+               .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+               .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+          if (/^### /.test(h)) { if (inList) { out += "</ul>"; inList = false; } out += "<h3>" + h.slice(4) + "</h3>"; }
+          else if (/^## /.test(h)) { if (inList) { out += "</ul>"; inList = false; } out += "<h2>" + h.slice(3) + "</h2>"; }
+          else if (/^- /.test(h)) { if (!inList) { out += "<ul>"; inList = true; } out += "<li>" + h.slice(2) + "</li>"; }
+          else if (h.trim() === "") { if (inList) { out += "</ul>"; inList = false; } }
+          else { if (inList) { out += "</ul>"; inList = false; } out += "<p>" + h + "</p>"; }
+        });
+        if (inList) out += "</ul>";
+      });
+      return out;
+    }
+
+    const list = document.getElementById("blog-list");
+    const view = document.getElementById("post-view");
+    let posts = [];
+
+    function showList() {
+      view.classList.remove("show");
+      list.style.display = "grid";
+      history.replaceState(null, "", "blog.html");
+    }
+    function showPost(p) {
+      list.style.display = "none";
+      document.getElementById("post-meta").innerHTML =
+        "<span>" + esc(p.date) + "</span>" + p.tags.map((x) => "<span>#" + esc(x) + "</span>").join("");
+      document.getElementById("post-title").textContent = p.title;
+      document.getElementById("post-body").innerHTML = md(p.content || "");
+      view.classList.add("show");
+      history.replaceState(null, "", "blog.html#" + p.slug);
+      window.scrollTo(0, 0);
+    }
+    document.getElementById("post-back").addEventListener("click", (e) => { e.preventDefault(); showList(); });
+
+    fetch("assets/data/blog.json")
+      .then((r) => r.json())
+      .then((data) => {
+        posts = data;
+        if (!posts.length) { list.innerHTML = '<p class="blog-empty">Henüz yazı yok — yakında.</p>'; return; }
+        posts.forEach((p) => {
+          const card = document.createElement("article");
+          card.className = "post-card";
+          card.innerHTML =
+            '<div class="post-meta"><span>' + esc(p.date) + "</span></div>" +
+            "<h2>" + esc(p.title) + "</h2>" +
+            "<p>" + esc(p.excerpt) + "</p>" +
+            '<div class="post-tags">' + p.tags.map((t2) => "<span>#" + esc(t2) + "</span>").join("") + "</div>";
+          card.addEventListener("click", () => showPost(p));
+          list.appendChild(card);
+        });
+        const slug = location.hash.slice(1);
+        const hit = posts.find((p) => p.slug === slug);
+        if (hit) showPost(hit);
+      })
+      .catch(() => { list.innerHTML = '<p class="blog-empty">Yazılar yüklenemedi.</p>'; });
+  })();
+  </script>
+</body>
+</html>

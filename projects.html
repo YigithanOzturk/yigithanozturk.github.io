@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeler — Yiğithan Öztürk</title>
+  <meta name="description" content="Yiğithan Öztürk'ün projeleri — yerel AI asistanından web platformlarına.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23060B16'/%3E%3Crect x='4.5' y='4.5' width='23' height='23' rx='4' fill='none' stroke='%234DA6FF' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='700' fill='%236FD2FF' text-anchor='middle'%3EY%C3%96%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .proj-wrap { max-width: var(--maxw); margin: 0 auto; padding: 8rem var(--pad) 5rem; position: relative; z-index: 1; }
+    .proj-filter { display: flex; gap: .5rem; flex-wrap: wrap; margin: 2rem 0 2.5rem; }
+    .proj-filter button {
+      font-family: var(--font-mono); font-size: .78rem; color: var(--steel);
+      background: none; border: 1px solid var(--line-soft); border-radius: 99px;
+      padding: .4rem .9rem; cursor: pointer; transition: all .2s;
+    }
+    .proj-filter button:hover { color: var(--volt-bright); border-color: var(--volt); }
+    .proj-filter button.active { color: var(--board); background: var(--volt); border-color: var(--volt); }
+    :root[data-theme="light"] .proj-filter button.active { color: #fff; }
+
+    .proj-full { display: grid; gap: 1.4rem; }
+    .pf-card {
+      position: relative; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--panel); padding: 1.8rem; overflow: hidden;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .pf-card::before { content:""; position:absolute; top:0; left:0; width:42%; height:2px; background: var(--grad-neon); }
+    .pf-card:hover { border-color: rgba(77,166,255,.45); box-shadow: 0 14px 40px rgba(2,8,20,.5), 0 0 24px rgba(46,91,255,.13); transform: translateY(-3px); }
+    .pf-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+    .pf-card h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; }
+    .pf-status { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; padding: .2rem .55rem; border-radius: 4px; white-space: nowrap; }
+    .pf-status.live { color: var(--board); background: var(--grad-neon); }
+    .pf-status.wip { color: var(--volt-bright); border: 1px solid var(--volt); }
+    .pf-status.done { color: var(--ok); border: 1px solid var(--ok); }
+    .pf-desc { color: var(--muted); margin: .9rem 0; max-width: 52rem; }
+    .pf-highlights { list-style: none; margin: 1rem 0; display: grid; gap: .4rem; }
+    .pf-highlights li { color: var(--muted); font-size: .93rem; padding-left: 1.3rem; position: relative; }
+    .pf-highlights li::before { content: "▸"; position: absolute; left: 0; color: var(--violet); }
+    .pf-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .pf-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .pf-tags span { font-family: var(--font-mono); font-size: .72rem; color: var(--steel); border: 1px solid var(--line-soft); border-radius: 4px; padding: .18rem .55rem; }
+    .pf-links { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: .82rem; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Ana sayfa">
+        <span class="brand-chip">YÖ</span>
+        <span class="brand-name">yigithanozturk<span class="brand-dim">.dev</span></span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Bölümler">
+        <a href="index.html#hakkimda">Hakkımda</a>
+        <a class="active" href="projects.html">Projeler</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
+        <a class="nav-cta" href="index.html#iletisim">İletişim</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+        <svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12.7 2.3a1 1 0 0 0-1.1 1.4 7 7 0 0 1-9.3 9.3 1 1 0 0 0-1.4 1.1A9 9 0 1 0 12.7 2.3Z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></g></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menüyü aç/kapat">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="proj-wrap">
+    <div class="section-head">
+      <span class="eyebrow">Projeler</span>
+      <h2>Üzerinde çalıştığım <em>her şey</em>.</h2>
+    </div>
+
+    <div class="proj-filter" id="proj-filter">
+      <button class="active" data-f="all">Hepsi</button>
+      <button data-f="sys">Sistem</button>
+      <button data-f="web">Web</button>
+      <button data-f="tool">Araç</button>
+    </div>
+
+    <div class="proj-full" id="proj-full">
+      <!-- NOT: SysWatch henüz tamamlanınca repo linkini ekle. Diğer linkleri de kendi repolarınla güncelle. -->
+
+      <article class="pf-card" id="monitor" data-cat="sys">
+        <div class="pf-head">
+          <h2>SysWatch — Sistem &amp; Donanım İzleme</h2>
+          <span class="pf-status live">ÖNE ÇIKAN</span>
+        </div>
+        <p class="pf-desc">Bir bilgisayarın o an ne durumda olduğunu görmek her zaman kolay değil. SysWatch, sistemin ve donanımın durumunu tek bir ekranda toplayıp anlık olarak gösteriyor. İşin özü, bir şeyler ters gitmeye başladığında bunu sorun büyümeden fark edebilmek.</p>
+        <ul class="pf-highlights">
+          <li>CPU, RAM, disk ve sıcaklık değerlerini canlı takip</li>
+          <li>Donanım sağlığını kontrol edip olası arızaları erkenden yakalama</li>
+          <li>Belirlenen eşikler aşıldığında anlık uyarı ve bildirim</li>
+          <li>Geçmişe dönük kayıt tutma ve durum raporları</li>
+        </ul>
+        <div class="pf-foot">
+          <div class="pf-tags"><span>Python</span><span>Sistem</span><span>Donanım</span><span>İzleme</span></div>
+          <div class="pf-links"><a href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="pf-card" id="qr" data-cat="web">
+        <div class="pf-head">
+          <h2>QR Kodlu Yoklama Sistemi</h2>
+          <span class="pf-status done">BİTİRME PROJESİ</span>
+        </div>
+        <p class="pf-desc">Lisans bitirme projem. Derslerde QR kod okutarak yoklama almayı hem hızlandıran hem de kopya yoklamanın önüne geçen web tabanlı bir sistem. Eğitmen ve öğrenci için ayrı paneller, geçmişe dönük raporlama içeriyor.</p>
+        <ul class="pf-highlights">
+          <li>Her oturum için süresi dolan, dinamik QR kodlar</li>
+          <li>Eğitmen ve öğrenci panelleri, ayrı yetkilerle</li>
+          <li>Yoklama geçmişi ve dışa aktarılabilir raporlar</li>
+        </ul>
+        <div class="pf-foot">
+          <div class="pf-tags"><span>Full-Stack</span><span>Web</span><span>Veritabanı</span></div>
+          <div class="pf-links"><a href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="pf-card" id="easyytd" data-cat="tool">
+        <div class="pf-head">
+          <h2>EasyYTD — Video/Ses İndirici</h2>
+          <span class="pf-status done">ARAÇ</span>
+        </div>
+        <p class="pf-desc">Farklı platformlardan video ve ses indirmeyi tek bir basit arayüzde toplayan masaüstü uygulaması. Amaç karmaşık komutlarla uğraşmadan, birkaç tıkla işi bitirmek.</p>
+        <ul class="pf-highlights">
+          <li>Birden fazla platformdan indirme desteği</li>
+          <li>Format ve kalite seçebilme</li>
+          <li>Teknik bilgi gerektirmeyen sade arayüz</li>
+        </ul>
+        <div class="pf-foot">
+          <div class="pf-tags"><span>Python</span><span>yt-dlp</span></div>
+          <div class="pf-links"><a href="https://github.com/YigithanOzturk/easyytd-V2.0" target="_blank" rel="noopener">Repo ↗</a></div>
+        </div>
+      </article>
+
+      <article class="pf-card" id="linkedhub" data-cat="tool">
+        <div class="pf-head">
+          <h2>LinkedHub — Otomatik Paylaşım</h2>
+          <span class="pf-status done">ARAÇ</span>
+        </div>
+        <p class="pf-desc">Bir GitHub reposunu inceleyip o proje için LinkedIn paylaşımı taslağı çıkaran bir araç. Projeyi her seferinde sıfırdan anlatmak yerine, hazır bir başlangıç metni vermesi fikrinden doğdu.</p>
+        <ul class="pf-highlights">
+          <li>Repo içeriğini analiz etme</li>
+          <li>Paylaşım metni ve özet üretme</li>
+          <li>İlgili hashtag önerileri</li>
+        </ul>
+        <div class="pf-foot">
+          <div class="pf-tags"><span>Python</span><span>LLM API</span></div>
+          <div class="pf-links"><a href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+      </article>
+    </div>
+
+    <p style="margin-top:2.5rem;font-family:var(--font-mono);font-size:.85rem;color:var(--steel);">
+      Daha fazlası → <a href="https://github.com/YigithanOzturk" target="_blank" rel="noopener">github.com/YigithanOzturk</a>
+    </p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© <span id="year">2026</span> Yiğithan Öztürk</span>
+      <a href="index.html">← Ana sayfa</a>
+    </div>
+  </footer>
+
+  <script>
+    const t = document.getElementById("nav-toggle"), l = document.getElementById("nav-links");
+    t?.addEventListener("click", () => { const o = l.classList.toggle("open"); t.setAttribute("aria-expanded", String(o)); });
+    const bar = document.getElementById("progress");
+    const upd = () => { const h = document.documentElement, m = h.scrollHeight - h.clientHeight; bar.style.width = m > 0 ? (h.scrollTop / m) * 100 + "%" : "0%"; };
+    window.addEventListener("scroll", upd, { passive: true }); upd();
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // theme
+    (() => {
+      let theme = "dark";
+      try { theme = localStorage.getItem("theme") || "dark"; } catch (e) {}
+      const apply = (x) => { if (x === "light") document.documentElement.setAttribute("data-theme", "light"); else document.documentElement.removeAttribute("data-theme"); try { localStorage.setItem("theme", x); } catch (e) {} };
+      apply(theme);
+      document.getElementById("theme-toggle")?.addEventListener("click", () => { theme = theme === "light" ? "dark" : "light"; apply(theme); });
+    })();
+
+    // filter
+    const fbar = document.getElementById("proj-filter");
+    const cards = [...document.querySelectorAll(".pf-card")];
+    fbar.addEventListener("click", (e) => {
+      const btn = e.target.closest("button"); if (!btn) return;
+      fbar.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b === btn));
+      const f = btn.dataset.f;
+      cards.forEach((c) => { c.style.display = (f === "all" || c.dataset.cat === f) ? "" : "none"; });
+    });
+  </script>
+</body>
+</html>
